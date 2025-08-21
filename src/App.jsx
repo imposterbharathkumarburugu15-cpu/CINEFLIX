@@ -25,8 +25,6 @@ function App() {
           <Route path ="/scan" element ={<Scan/>}/>
         </Route>
         <Route path="/" element={<Home />} />
-
-      
         <Route path="/sign" element={<SignInPage />} />
       </Routes>
     </Router>
