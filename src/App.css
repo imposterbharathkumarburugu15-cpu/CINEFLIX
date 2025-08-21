@@ -1,0 +1,31 @@
+/* Navbar Styles */
+.cineflix-navbar {
+  background: linear-gradient(90deg, #1a1a1a, #0f0f0f);
+  padding: 12px 20px;
+  border-bottom: 2px solid #ff3c3c;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.5);
+}
+
+.cineflix-navbar .brand-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff3c3c !important;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.cineflix-navbar .nav-link {
+  color: #ddd !important;
+  margin-left: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.cineflix-navbar .nav-link:hover {
+  color: #ff3c3c !important;
+  text-shadow: 0px 0px 6px rgba(255,60,60,0.6);
+}
+container{
+  display: flex;
+  
+}

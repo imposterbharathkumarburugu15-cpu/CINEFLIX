@@ -1,0 +1,195 @@
+/* signin.css — cleaned and fixed */
+
+/* --- reset & sensible defaults --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Make sure the whole page uses the gradient background and full width */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  width: 100vw; /* use vw, not dVw */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to right, #ffecd2, #fcb69f);
+}
+
+/* Main wrapper */
+.main-content,
+.signin-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* make sure it spans full viewport */
+}
+
+/* Top header */
+.site-header {
+  padding: 20px 30px;
+}
+.site-header h1 {
+  color: #3f8b87;
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: .4px;
+}
+
+/* Card (image + form) - centered and responsive */
+.signin-card,
+.midterm {
+  width: 900px;
+  max-width: 92%;
+  height: 560px;
+  margin: 32px auto;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 16px 40px rgba(15, 15, 15, 0.15);
+  align-items: stretch;
+}
+
+/* Left image column */
+.signin-left {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+/* image fills the left column */
+.signin-left .signin-img,
+.signin-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Right form column */
+.signin-right {
+  flex: 1;
+  padding: 36px;
+  background: rgba(255,255,255,0.95);
+  color: #222;
+  display: flex;
+  align-items: center;
+}
+
+/* Card body area: keep the content full width */
+.signin-right .card-body,
+.signin-right > .card-body,
+.signin-right > div {
+  width: 100%;
+}
+
+/* Heading inside form */
+.signin-right h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #222;
+  font-weight: 800;
+}
+
+/* ---------- Form spacing tweaks ---------- */
+.signin-right .form-group,
+.signin-right .mb-3 {
+  margin-bottom: 1.25rem;
+}
+.signin-right .form-label,
+.signin-right label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+}
+.signin-right .form-control {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+}
+.signin-right .form-row-gap {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.signin-right .inline-field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.signin-right .inline-field label {
+  min-width: 100px;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+.signin-right .btn {
+  margin-top: 9px;
+  padding: 10px 16px;
+  font-weight: 700;
+  border-radius: 8px;
+}
+.signin-right {
+  padding: 40px;
+}
+
+/* Inputs: enforce white background and good contrast */
+.signin-right .form-control,
+.signin-right input,
+.signin-right textarea {
+  background-color: #fff !important;
+  border: 1px solid #d8d8d8;
+  color: #111 !important;
+  padding: 10px 12px;
+  border-radius: 6px;
+}
+.signin-right .form-control:focus,
+.signin-right input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 6px 18px rgba(0, 123, 255, 0.12);
+}
+.signin-right .input-group-text {
+  background: #f4f4f4;
+  border: 1px solid #d8d8d8;
+}
+
+/* Responsive: stack and hide image on small screens */
+@media (max-width: 768px) {
+  .signin-card,
+  .midterm {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    border-radius: 0;
+    flex-direction: column;
+  }
+
+  .signin-left {
+    display: none;
+  }
+
+  .signin-right {
+    padding: 24px;
+    height: 100vh;
+    overflow: auto;
+  }
+
+  .site-header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* small visual tweaks */
+button:focus, input:focus, textarea:focus {
+  outline: none;
+}
+
+/* IMPORTANT: removed body { width: fit-content } which caused the layout shrink */

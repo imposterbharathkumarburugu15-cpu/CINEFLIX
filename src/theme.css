@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🎬 Global Theme Classes */
+
+/* Buttons */
+.btn {
+  @apply px-4 py-2 rounded-md font-medium transition text-white;
+}
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700;
+}
+.btn-secondary {
+  @apply bg-green-600 hover:bg-green-700;
+}
+.btn-disabled {
+  @apply bg-gray-400 cursor-not-allowed;
+}
+
+/* Cards */
+.card {
+  @apply relative rounded-lg overflow-hidden shadow-md bg-white;
+}
+.card-hover {
+  @apply transition-transform duration-300 hover:scale-105;
+}
+
+/* Section Titles */
+.section-title {
+  @apply text-2xl font-bold mb-4;
+}
+/* theme.css — global app styles */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #0d0d0d;
+  color: #fff;
+}
+
+h1.title {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 2rem;
+  color: #ffcc00;
+}
+
+.info {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1rem;
+}
+
+/* Form Controls */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.controls input,
+.controls select,
+.controls button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.controls input {
+  flex: 1;
+  min-width: 180px;
+}
+
+.controls button {
+  background: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.controls button:hover {
+  background: #e6b800;
+}
