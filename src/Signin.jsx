@@ -47,6 +47,7 @@ const Signin = () => {
                 validationSchema={schema}
                 onSubmit={(values, { setSubmitting }) => {
                   console.log("Form submitted:", values);
+                   navigate("/movies");
                   setSubmitting(false);
                   alert("Sign-in successful! Welcome to CineFlix ✅");
                   navigate("/movies");
