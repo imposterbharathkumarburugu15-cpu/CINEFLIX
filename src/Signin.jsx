@@ -10,6 +10,7 @@ import {
   Card,
   Container,
 } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "./signin.css";
 import l1 from "./logol.png"; // update path if needed
 
@@ -24,6 +25,8 @@ const schema = Yup.object().shape({
 });
 
 const Signin = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="main-content signin-container`">
       <header className="site-header">
@@ -45,7 +48,8 @@ const Signin = () => {
                 onSubmit={(values, { setSubmitting }) => {
                   console.log("Form submitted:", values);
                   setSubmitting(false);
-                  alert("Form submitted ✅");
+                  alert("Sign-in successful! Welcome to CineFlix ✅");
+                  navigate("/movies");
                 }}
                 initialValues={{
                   firstName: "",
