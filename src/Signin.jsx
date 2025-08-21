@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 import {
   Form,
   Button,
@@ -10,7 +11,6 @@ import {
   Card,
   Container,
 } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import "./signin.css";
 import l1 from "./logol.png"; // update path if needed
 
@@ -47,7 +47,6 @@ const Signin = () => {
                 validationSchema={schema}
                 onSubmit={(values, { setSubmitting }) => {
                   console.log("Form submitted:", values);
-                   navigate("/movies");
                   setSubmitting(false);
                   alert("Sign-in successful! Welcome to CineFlix ✅");
                   navigate("/movies");
