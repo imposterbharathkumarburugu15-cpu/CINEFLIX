@@ -1,10 +1,11 @@
 // src/pages/BookingPage.jsx
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "../bp.css";
 
 function BookingPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [selectedSeats, setSelectedSeats] = useState([]);
 
   const rows = 6; // number of rows
@@ -55,8 +56,12 @@ function BookingPage() {
       <div className="summary">
         <h3>Selected Seats: {selectedSeats.join(", ") || "None"}</h3>
         <h3>Total: ₹{totalPrice}</h3>
-        <button className="btn-confirm" disabled={!selectedSeats.length}>
-          <a href="/scan"> Confirm Booking</a>
+        <button 
+          className="btn-confirm" 
+          disabled={!selectedSeats.length}
+          onClick={() => navigate('/scan')}
+        >
+          Confirm Booking
         </button>
       </div>
     </div>
