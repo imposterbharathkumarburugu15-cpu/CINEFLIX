@@ -16,6 +16,7 @@ const CineflixNavbar = () => {
             <Nav.Link as={Link} to="/movies">Home</Nav.Link>
             <Nav.Link as={Link} to="/about">About</Nav.Link>
             <Nav.Link as={Link} to="/">Login</Nav.Link>
+            <Nav.Link as={Link} to="/watchlist">Watchlist</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
