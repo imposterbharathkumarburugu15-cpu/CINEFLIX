@@ -9,7 +9,7 @@ import MoviesPage from "./api/MoviesPage";
 import Booking from "./api/Booking";
 import About from './About';
 import Scan from './final';
-import Watch from "./api/Watchlist"; // Import WatchlistPage if needed
+import Watch from "./api/Watchlist"; 
 
 
 function App() {
