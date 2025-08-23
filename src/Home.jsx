@@ -31,7 +31,7 @@ export default function Home() {
           {/* right form */}
           <section className="right-panel">
             <div className="form-box">
-              <h2 className="title">Welcome Back</h2>
+              <h2 className="title">Login Page .. </h2>
 
               <Formik
                 initialValues={{ email: "", password: "" }}
