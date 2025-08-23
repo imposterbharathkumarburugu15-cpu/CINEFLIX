@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -42,6 +43,21 @@ function MovieDetail() {
   }, [id]);
 
   if (!movie) return <p style={{ textAlign: "center" }}> Loading...</p>;
+ const addToWatchlist = () => {
+    const storedWatchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+    if (!storedWatchlist.find(m => m.id === movie.id)) {
+      storedWatchlist.push({
+        id: movie.id,
+        title: movie.title,
+        poster_path: movie.poster_path,
+        release_date: movie.release_date,
+      });
+      localStorage.setItem("watchlist", JSON.stringify(storedWatchlist));
+      alert(`${movie.title} added to watchlist!`);
+    } else {
+      alert(`${movie.title} is already in your watchlist.`);
+    }
+  };
 
   return (
     <div className="detail-page">
@@ -68,9 +84,9 @@ function MovieDetail() {
 
           <div className="actions">
             <Link to={`/movie/${movie.id}/book`}>
-              <button className="btn-primary">🎟 Book Tickets</button>
+              <button className="btn-primary"> Book Tickets</button>
            </Link>
-            <button className="btn-secondary">❤️ Add to Watchlist</button>
+           <button className="btn-secondary" onClick={addToWatchlist}>Add to Watchlist</button>
           </div>
         </div>
       </div>
