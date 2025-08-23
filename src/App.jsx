@@ -9,6 +9,7 @@ import MoviesPage from "./api/MoviesPage";
 import Booking from "./api/Booking";
 import About from './About';
 import Scan from './final';
+import Watch from "./api/Watchlist"; // Import WatchlistPage if needed
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Routes>
       
         <Route element={<Layout />}>
+          <Route path="watchlist" element={<Watch/>}/>
           
           <Route path="/movies" element={<MoviesPage />}/>
           <Route path="/movie/:id" element={<MovieDetails />} />
