@@ -31,6 +31,7 @@ export default function Home() {
           {/* right form */}
           <section className="right-panel">
             <div className="form-box">
+              <h1>Welcome !</h1>
               <h2 className="title">Login Page .. </h2>
 
               <Formik
