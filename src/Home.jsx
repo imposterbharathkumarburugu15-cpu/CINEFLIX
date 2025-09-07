@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { Form, Button } from "react-bootstrap";
 import "./Home.css";
 import popImg from "./pop.png";
-import { useNavigate, Link } from "react-router-dom"; // ✅ import Link
+import { useNavigate, Link } from "react-router-dom"; 
 
 // Validation schema
 const schema = Yup.object().shape({
