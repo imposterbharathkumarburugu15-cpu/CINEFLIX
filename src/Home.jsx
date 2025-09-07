@@ -77,7 +77,6 @@ export default function Home() {
                     <div className="meta-row">
                       <div className="signup-cta">
                         <span>Don’t have an account?</span>
-                        {/* ✅ Use Link instead of Button */}
                         <Link to="/sign" className="link" style={{ marginLeft: "5px" }}>
                           Sign up
                         </Link>
