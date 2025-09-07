@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom"; 
-import "../theme.css";   
-import "../movie.css";   
+import { Link } from "react-router-dom";
+import Carousel from "react-bootstrap/Carousel";
+import "../theme.css";
+import "../movie.css";
 
 function MoviesPage() {
   const [items, setItems] = useState([]);
   const [query, setQuery] = useState("");
-  const [type, setType] = useState("movie");       // movie | tv
+  const [type, setType] = useState("movie"); // movie | tv
   const [category, setCategory] = useState("popular"); // popular | top_rated | trending
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-  const IMG_BASE = "https://image.tmdb.org/t/p/w500";
+  const IMG_BASE = "https://image.tmdb.org/t/p/original"; // bigger size for carousel
 
   const fetchData = async () => {
     setLoading(true);
@@ -21,15 +22,12 @@ function MoviesPage() {
       let url = "";
 
       if (query) {
-        // Search
         url = `https://api.themoviedb.org/3/search/${type}?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(
           query
         )}&page=1&include_adult=false`;
       } else if (category === "trending") {
-        // Trending
         url = `https://api.themoviedb.org/3/trending/${type}/week?api_key=${API_KEY}&language=en-US&page=1`;
       } else {
-        // Popular or Top Rated
         url = `https://api.themoviedb.org/3/${type}/${category}?api_key=${API_KEY}&language=en-US&page=1`;
       }
 
@@ -37,12 +35,14 @@ function MoviesPage() {
       const data = await res.json();
 
       if (data.results) {
-        // ✅ preprocess posters before saving
         const results = data.results.map((item) => ({
           ...item,
           poster_full: item.poster_path
             ? IMG_BASE + item.poster_path
-            : "https://via.placeholder.com/300x450?text=No+Image",
+            : "https://via.placeholder.com/800x450?text=No+Image",
+          backdrop_full: item.backdrop_path
+            ? IMG_BASE + item.backdrop_path
+            : "https://via.placeholder.com/1280x720?text=No+Backdrop",
         }));
         setItems(results);
       } else {
@@ -92,13 +92,31 @@ function MoviesPage() {
         <button type="submit">Search</button>
       </form>
 
-      {/* Loading */}
+      {/* Loading / Error */}
       {loading && <p className="info">⏳ Loading...</p>}
-
-      {/* Error */}
       {error && <p className="info">{error}</p>}
 
-      {/* Movies / TV Shows */}
+      {/* Carousel - Top */}
+      {items.length > 0 && (
+        <Carousel fade interval={3000} className="mb-5">
+          {items.slice(0, 5).map((movie) => (
+            <Carousel.Item key={movie.id}>
+              <img
+                className="d-block w-100"
+                src={movie.backdrop_full}
+                alt={movie.title || movie.name}
+                style={{ maxHeight: "500px", objectFit: "cover" }}
+              />
+              <Carousel.Caption>
+                <h3>{movie.title || movie.name}</h3>
+                <p>⭐ {movie.vote_average?.toFixed(1)}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      )}
+
+      {/* Grid - Bottom */}
       <div className="grid">
         {!loading && !error && items.length === 0 && (
           <p className="info">No results found.</p>
@@ -110,7 +128,6 @@ function MoviesPage() {
             <h3>{item.title || item.name}</h3>
             <p>⭐ {item.vote_average?.toFixed(1)}</p>
 
-            {/* ✅ Navigate to details */}
             <Link to={`/movie/${item.id}`}>
               <button
                 style={{
@@ -133,3 +150,4 @@ function MoviesPage() {
 }
 
 export default MoviesPage;
+
