@@ -10,6 +10,7 @@ import Booking from "./api/Booking";
 import About from './About';
 import Scan from './final';
 import Watch from "./api/Watchlist"; 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
