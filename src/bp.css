@@ -1,73 +1,255 @@
-.booking-page {
-  text-align: center;
-  color: white;
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.booking-page, .container {
+  max-width: 1000px;
+  margin: 0 auto;
   padding: 20px;
+  text-align: center;
+}
+
+h1, h2 {
+  margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .screen {
-  background: linear-gradient(to right, #ff8c00, #ff0080);
-  height: 40px;
-  margin: 20px auto;
+  background: #aaa;
+  color: #000;
+  padding: 10px;
+  margin: 20px auto 40px;
   width: 60%;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: bold;
-  line-height: 40px;
+  text-align: center;
 }
 
-.seats-grid {
+.section {
+  margin: 40px 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin: 20px auto;
-  width: fit-content;
+  align-items: center;
+}
+
+.section h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #fff;
 }
 
 .row {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  width: 100%;
+  gap: 15px;
+  position: relative;
+}
+
+.row-label {
+  width: 40px;
+  text-align: right;
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff;
+}
+
+.seat-block {
+  display: flex;
+  justify-content: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .seat {
-  width: 40px;
-  height: 40px;
-  background: #444;
-  border-radius: 8px;
+  width: 35px;
+  height: 35px;
+  border: 2px solid #0f0;
+  border-radius: 6px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-size: 0.9rem;
-  color: #ddd;
-  transition: 0.2s;
+  font-size: 14px;
+  background-color: transparent;
+  transition: all 0.2s ease;
 }
 
 .seat:hover {
-  background: #666;
+  background-color: rgba(0, 255, 0, 0.2);
 }
 
 .seat.selected {
-  background: #00c853;
-  color: white;
-  font-weight: bold;
+  background-color: #0f0;
+  color: #000;
+}
+
+.seat.booked {
+  background-color: #666;
+  border-color: #666;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  font-size: 14px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 2px solid #0f0;
+}
+
+.legend-box.selected {
+  background: #0f0;
+}
+
+.legend-box.sold {
+  background: #666;
+  border-color: #666;
 }
 
 .summary {
   margin-top: 30px;
+  font-size: 16px;
 }
 
 .btn-confirm {
-  margin-top: 15px;
-  padding: 12px 20px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 10px;
-  background: #ff3d00;
+  background: #e50914;
   color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 .btn-confirm:disabled {
-  background: #666;
+  background: gray;
   cursor: not-allowed;
+}
+
+.btn-confirm:hover:enabled {
+  background: #f40612;
+}
+body, html {
+  background-color: #000;  /* force black */
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.booking-page, .container {
+  background-color: #000; /* ensure container is also black */
+}
+
+.section, .screen {
+  background-color: transparent; /* or keep screen gray if needed */
+}
+
+@media (max-width: 600px) {
+  .seat {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .row-label {
+    width: 30px;
+    font-size: 14px;
+  }
+
+  .screen {
+    width: 80%;
+    font-size: 20px;
+  }
+}
+@media (max-width: 400px) {
+  .seat {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+
+  .row-label {
+    width: 25px;
+    font-size: 12px;
+  }
+
+  .screen {
+    width: 90%;
+    font-size: 18px;
+  }
+}
+@media (max-width: 300px) {
+  .seat {
+    width: 20px;
+    height: 20px;
+    font-size: 8px;
+  }
+
+  .row-label {
+    width: 20px;
+    font-size: 10px;
+  }
+
+  .screen {
+    width: 95%;
+    font-size: 16px;
+  }
+}
+@media (max-width: 200px) {
+  .seat {
+    width: 16px;
+    height: 16px;
+    font-size: 6px;
+  }
+
+  .row-label {
+    width: 15px;
+    font-size: 8px;
+  }
+
+  .screen {
+    width: 100%;
+    font-size: 14px;
+  }
+}
+@media (max-width: 150px) {
+  .seat {
+    width: 12px;
+    height: 12px;
+    font-size: 4px;
+  }
+
+  .row-label {
+    width: 10px;
+    font-size: 6px;
+  }
+
+  .screen {
+    width: 100%;
+    font-size: 12px;
+  }
 }
