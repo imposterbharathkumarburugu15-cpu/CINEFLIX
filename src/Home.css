@@ -154,6 +154,10 @@ body {
   text-shadow: 0 6px 20px rgba(0,0,0,0.08);
   -webkit-font-smoothing: antialiased;
 }
+.note{
+    color: #c53030;
+  
+}
 
 /* Optional: slightly smaller on very small screens to avoid wrapping */
 @media (max-width: 420px) {
