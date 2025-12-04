@@ -2,29 +2,19 @@ import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import {
-  Form,
-  Button,
-  Row,
-  Col,
-  InputGroup,
-  Card,
-  Container,
-} from "react-bootstrap";
+import { Form, Button, Row, Col, Card, Container } from "react-bootstrap";
 import "./signin.css";
-import l1 from "./logol.png"; 
+import l1 from "./logol.png";
 
 const schema = Yup.object().shape({
-  firstName: Yup.string().required("First name is required"),
-  lastName: Yup.string().required("Last name is required"),
-  username: Yup.string().required("Username is required"),
-  city: Yup.string().required("City is required"),
-  state: Yup.string().required("State is required"),
-  zip: Yup.string().required("Zip is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
   terms: Yup.boolean().oneOf([true], "You must accept the terms"),
 });
 
-const Signin = () => {
+const Sign = () => {
   const navigate = useNavigate();
 
   return (
@@ -44,21 +34,19 @@ const Signin = () => {
               <h2 className="mb-4">Sign In</h2>
 
               <Formik
+                initialValues={{ email: "", password: "", terms: false }}
                 validationSchema={schema}
                 onSubmit={(values, { setSubmitting }) => {
-                  console.log("Form submitted:", values);
-                  setSubmitting(false);
-                  alert("Sign-in successful! Welcome to CineFlix ✅");
-                  navigate("/movies");
-                }}
-                initialValues={{
-                  firstName: "",
-                  lastName: "",
-                  username: "",
-                  city: "",
-                  state: "",
-                  zip: "",
-                  terms: false,
+                  // show console info, then navigate to /movies
+                  setSubmitting(true);
+                  console.log("Sign form submitted:", values);
+
+                  // small timeout to allow button disabled state to show briefly
+                  setTimeout(() => {
+                    setSubmitting(false);
+                    // Navigate to movies page
+                    navigate("/movies");
+                  }, 300);
                 }}
               >
                 {({
@@ -68,114 +56,43 @@ const Signin = () => {
                   values,
                   touched,
                   errors,
+                  isSubmitting,
                 }) => (
                   <Form noValidate onSubmit={handleSubmit}>
-                    <Row className="mb-3">
-                      <Form.Group as={Col} md="6" controlId="firstName">
-                        <Form.Label>First name</Form.Label>
-                        <Form.Control
-                          type="text"
-                          name="firstName"
-                          value={values.firstName}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          isInvalid={touched.firstName && !!errors.firstName}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {errors.firstName}
-                        </Form.Control.Feedback>
-                      </Form.Group>
+                    <Form.Group className="mb-3" controlId="email">
+                      <Form.Label>Email</Form.Label>
+                      <Form.Control
+                        type="email"
+                        name="email"
+                        placeholder="name@example.com"
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isInvalid={touched.email && !!errors.email}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.email}
+                      </Form.Control.Feedback>
+                    </Form.Group>
 
-                      <Form.Group as={Col} md="6" controlId="lastName">
-                        <Form.Label>Last name</Form.Label>
-                        <Form.Control
-                          type="text"
-                          name="lastName"
-                          value={values.lastName}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          isInvalid={touched.lastName && !!errors.lastName}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {errors.lastName}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                    </Row>
-
-                    <Row className="mb-3">
-                      <Form.Group as={Col} md="12" controlId="username">
-                        <Form.Label>Username</Form.Label>
-                        <InputGroup hasValidation>
-                          <Form.Control
-                            type="text"
-                            name="username"
-                            placeholder="@Username.gmail.com"
-                            aria-describedby="inputGroupPrepend"
-                            value={values.username}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            isInvalid={touched.username && !!errors.username}
-                          />
-                          <Form.Control.Feedback type="invalid">
-                            {errors.username}
-                          </Form.Control.Feedback>
-                        </InputGroup>
-                      </Form.Group>
-                    </Row>
-
-                    <Row className="mb-3">
-                      <Form.Group as={Col} md="6" controlId="city">
-                        <Form.Label>City</Form.Label>
-                        <Form.Control
-                          type="text"
-                          name="city"
-                          placeholder="City"
-                          value={values.city}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          isInvalid={touched.city && !!errors.city}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {errors.city}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-
-                      <Form.Group as={Col} md="3" controlId="state">
-                        <Form.Label>State</Form.Label>
-                        <Form.Control
-                          type="text"
-                          name="state"
-                          placeholder="State"
-                          value={values.state}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          isInvalid={touched.state && !!errors.state}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {errors.state}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-
-                      <Form.Group as={Col} md="3" controlId="zip">
-                        <Form.Label>Zip</Form.Label>
-                        <Form.Control
-                          type="text"
-                          name="zip"
-                          placeholder="Zip"
-                          value={values.zip}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          isInvalid={touched.zip && !!errors.zip}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {errors.zip}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                    </Row>
+                    <Form.Group className="mb-3" controlId="password">
+                      <Form.Label>Password</Form.Label>
+                      <Form.Control
+                        type="password"
+                        name="password"
+                        placeholder="Enter password"
+                        value={values.password}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isInvalid={touched.password && !!errors.password}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.password}
+                      </Form.Control.Feedback>
+                    </Form.Group>
 
                     <Form.Group className="mb-3" controlId="terms">
                       <Form.Check
-                        required
                         name="terms"
                         label="Agree to terms and conditions"
                         onChange={handleChange}
@@ -187,9 +104,17 @@ const Signin = () => {
                       />
                     </Form.Group>
 
-                    <Button type="submit" className="mt-2" variant="dark">
-                      Submit form
-                    </Button>
+                    <Row>
+                      <Col>
+                        <Button
+                          type="submit"
+                          variant="dark"
+                          disabled={isSubmitting}
+                        >
+                          {isSubmitting ? "Submitting..." : "Submit"}
+                        </Button>
+                      </Col>
+                    </Row>
                   </Form>
                 )}
               </Formik>
@@ -201,4 +126,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Sign;
