@@ -28,7 +28,7 @@ const Signin = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="main-content signin-container`">
+    <div className="main-content signin-container">
       <header className="site-header">
         <h1>CINEFLIX</h1>
       </header>
@@ -106,7 +106,6 @@ const Signin = () => {
                       <Form.Group as={Col} md="12" controlId="username">
                         <Form.Label>Username</Form.Label>
                         <InputGroup hasValidation>
-                          
                           <Form.Control
                             type="text"
                             name="username"
@@ -154,6 +153,22 @@ const Signin = () => {
                         />
                         <Form.Control.Feedback type="invalid">
                           {errors.state}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+
+                      <Form.Group as={Col} md="3" controlId="zip">
+                        <Form.Label>Zip</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="zip"
+                          placeholder="Zip"
+                          value={values.zip}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          isInvalid={touched.zip && !!errors.zip}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.zip}
                         </Form.Control.Feedback>
                       </Form.Group>
                     </Row>
