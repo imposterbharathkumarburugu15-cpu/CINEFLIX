@@ -76,7 +76,7 @@ export default function Home() {
 
                     <div className="meta-row">
                       <div className="signup-cta">
-                        <p>Note Type Any Email You get acess.</p>
+                        <p className="note" >Note Type Any Email You get acess.</p>
                         <span>Don’t have an account?</span>
                         <Link to="/sign" className="link" style={{ marginLeft: "5px" }}>
                           Sign up
