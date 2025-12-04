@@ -12,7 +12,7 @@ import {
   Container,
 } from "react-bootstrap";
 import "./signin.css";
-import l1 from "./logol.png"; // update path if needed
+import l1 from "./logol.png"; 
 
 const schema = Yup.object().shape({
   firstName: Yup.string().required("First name is required"),
