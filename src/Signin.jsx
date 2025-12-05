@@ -34,12 +34,12 @@ const Sign = () => {
       <Container fluid className="d-flex justify-content-center align-items-start">
         <Card className="signin-card midterm">
           <div className="signin-left">
-            <img src={l1} alt="illustration" className="signin-img" />
+             <img src={l1} alt="illustration" className="signin-img" />
           </div>
 
           <div className="signin-right">
             <Card.Body>
-              <h2 className="mb-4">Sign In / Register</h2>
+              <h2 className="mb-4"> Register</h2>
 
               <Formik
                 initialValues={{
