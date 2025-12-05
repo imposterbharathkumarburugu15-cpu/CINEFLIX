@@ -4,12 +4,12 @@ import './final.css';
 
 const Final = () => {
     return (
-        <div>
+        <div  className="scan-container>
             <h1>
                 YOUR TICKET IS CONFIRMED. THANK YOU FOR VISITING <i>CineFlix...</i>
             </h1>
             <div className="scan-container">
-                <img src={L1} alt="Qr-Code" />
+                <img src={L1} className="scan-container-image"alt="Qr-Code" />
             </div>
         </div>
     );
