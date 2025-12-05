@@ -8,7 +8,7 @@ const CineflixNavbar = () => {
     <Navbar expand="lg" className="cineflix-navbar">
       <Container>
         <Navbar.Brand as={Link} to="/" className="brand-logo">
-           CINEFLIX
+          CINEFLIX
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
