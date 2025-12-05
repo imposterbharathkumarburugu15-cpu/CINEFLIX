@@ -32,7 +32,7 @@ export default function Home() {
           <section className="right-panel">
             <div className="form-box">
               <h1>Welcome !</h1>
-              <h2 className="title">Login Page .. </h2>
+              <h2 className="title">  Login Page </h2>
 
               <Formik
                 initialValues={{ email: "", password: "" }}
@@ -76,7 +76,7 @@ export default function Home() {
 
                     <div className="meta-row">
                       <div className="signup-cta">
-                        <p className="note" >Note Type Any Email You get acess.</p>
+                        <p className="note" > Note: Type Any Email You get acess.</p>
                         <span>Don’t have an account?</span>
                         <Link to="/sign" className="link" style={{ marginLeft: "5px" }}>
                           Sign up
